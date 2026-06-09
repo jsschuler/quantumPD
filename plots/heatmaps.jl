@@ -98,8 +98,8 @@ fig5 = Figure(resolution=(700, 350))
 ax5 = Axis(fig5[1, 1], xlabel="Spectral gap", ylabel="Welfare gap", title="Spectral gap vs Welfare gap")
 
 combined = vcat(
-    transform(er, :p => (x -> fill("ER", length(x))) => :source),
-    transform(ws, :beta => (x -> fill("WS", length(x))) => :source),
+    transform(rename(er, :p => :param), :param => (x -> fill("ER", length(x))) => :source),
+    transform(rename(ws, :beta => :param), :param => (x -> fill("WS", length(x))) => :source),
 )
 
 for (col, label, color) in [(:sa_mean_welfare, "SA", :steelblue), (:sqa_mean_welfare, "SQA", :coral)]

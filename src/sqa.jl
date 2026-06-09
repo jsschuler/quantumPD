@@ -66,15 +66,10 @@ function run_sqa(Q, offset, n, rng)
 
         if delta_total <= 0.0 || rand(rng) < exp(-beta * delta_total)
             replicas[tau][i] = new_val
-        end
-    end
-
-    # Find best Trotter slice
-    for tau in 1:P
-        w = welfare_from_config(replicas[tau], Q, offset)
-        if w > best_welfare
-            best_welfare = w
-            best_config = copy(replicas[tau])
+            if w_new > best_welfare
+                best_welfare = w_new
+                best_config = copy(replicas[tau])
+            end
         end
     end
 

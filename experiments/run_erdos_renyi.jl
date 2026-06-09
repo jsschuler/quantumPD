@@ -5,6 +5,7 @@ using DataFrames
 using CSV
 using Statistics
 using Base.Threads
+using Graphs
 
 const N_NODES        = 10
 const R              = 3
